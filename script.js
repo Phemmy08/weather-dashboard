@@ -741,7 +741,7 @@ function formatChartDate(date) {
 }
 
 /**
- * Capitalize first letter of string
+ * Capitalize first letter of strings
  * @param {string} str - String to capitalize
  */
 function capitalizeFirst(str) {
