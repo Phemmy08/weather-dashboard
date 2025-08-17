@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard - Stunning Weather Experience</title>
+    
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="shape shape-5"></div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="weather-icon-header">🌤️</div>
+                    <h1 class="app-title">
+                        <span class="title-main">Weather</span>
+                        <span class="title-accent">Dashboard</span>
+                    </h1>
+                </div>
+                <div class="header-subtitle">
+                    Real-time weather insights for any location worldwide
+                </div>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-card">
+                <div class="search-header">
+                    <h2>Discover Weather</h2>
+                    <p>Enter any city name to get instant weather updates</p>
+                </div>
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <input type="text" id="cityInput" placeholder="Search for a city..." class="search-input">
+                        <div class="search-icon">🔍</div>
+                    </div>
+                    <button id="searchBtn" class="search-btn">
+                        <span class="btn-text">Search</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </div>
+                <div id="errorMessage" class="error-message hidden"></div>
+            </div>
+        </section>
+
+        <!-- Weather Content Grid -->
+        <div class="weather-grid">
+            <!-- Current Weather Section -->
+            <section id="currentWeather" class="current-weather-section hidden">
+                <div class="current-weather-card">
+                    <div class="weather-header">
+                        <div class="location-info">
+                            <h2 id="cityName" class="city-name">City Name</h2>
+                            <p id="currentDate" class="current-date">Date</p>
+                        </div>
+                        <div class="weather-status">
+                            <div class="status-badge" id="weatherDescription">Clear</div>
+                        </div>
+                    </div>
+                    
+                    <div class="weather-main-info">
+                        <div class="temperature-section">
+                            <div class="temp-display">
+                                <span id="currentTemp" class="main-temperature">25°</span>
+                                <div class="temp-unit">Celsius</div>
+                            </div>
+                            <div class="feels-like">
+                                Feels like <span id="feelsLike">27°</span>
+                            </div>
+                        </div>
+                        <div class="weather-icon-section">
+                            <img id="currentIcon" src="" alt="Weather Icon" class="main-weather-icon">
+                        </div>
+                    </div>
+
+                    <div class="weather-metrics">
+                        <div class="metric-card">
+                            <div class="metric-icon">💧</div>
+                            <div class="metric-info">
+                                <div class="metric-label">Humidity</div>
+                                <div id="humidity" class="metric-value">65%</div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon">💨</div>
+                            <div class="metric-info">
+                                <div class="metric-label">Wind Speed</div>
+                                <div id="windSpeed" class="metric-value">12 km/h</div>
+                            </div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-icon">🌡️</div>
+                            <div class="metric-info">
+                                <div class="metric-label">Pressure</div>
+                                <div id="pressure" class="metric-value">1013 hPa</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5-Day Forecast Section -->
+            <section id="forecastSection" class="forecast-section hidden">
+                <div class="forecast-card">
+                    <div class="section-header">
+                        <h2 class="section-title">5-Day Forecast</h2>
+                        <p class="section-subtitle">Weather outlook for the coming days</p>
+                    </div>
+                    <div id="forecastContainer" class="forecast-grid">
+                        <!-- Forecast items will be inserted here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Temperature Chart Section -->
+            <section id="chartSection" class="chart-section hidden">
+                <div class="chart-card">
+                    <div class="section-header">
+                        <h2 class="section-title">Temperature Trends</h2>
+                        <p class="section-subtitle">Visual representation of temperature changes</p>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="temperatureChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading" class="loading-overlay hidden">
+            <div class="loading-content">
+                <div class="loading-spinner"></div>
+                <div class="loading-text">Fetching weather data...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
